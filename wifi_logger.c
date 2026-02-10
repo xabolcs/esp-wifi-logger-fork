@@ -147,7 +147,9 @@ int system_log_message_route(const char* fmt, va_list tag)
 
 void start_wifi_logger(void)
 {
+#ifndef CONFIG_WIFI_LOGGER_WITHOUT_WIFI_INITIALIZATION
 	init_wifi();
+#endif
 	ESP_ERROR_CHECK(init_queue());
 
 #ifdef CONFIG_ROUTE_ESP_IDF_API_LOGS_TO_WIFI
